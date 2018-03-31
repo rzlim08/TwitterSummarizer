@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1522524395429.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3246259808",
+    "id" : "B798B1C1",
+    "lastKnownWriteTime" : 1522528264,
+    "last_content_update" : 1522528264734,
+    "path" : "~/TwitterProfile/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "cursorPosition" : "31,5",
+        "scrollLine" : "23"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

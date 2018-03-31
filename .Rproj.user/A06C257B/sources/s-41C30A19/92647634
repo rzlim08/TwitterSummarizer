@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1522524968461.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "92647634",
+    "lastKnownWriteTime" : 1522526455,
+    "last_content_update" : 1522526455653,
+    "path" : "~/TwitterProfile/ParseFunc.R",
+    "project_path" : "ParseFunc.R",
+    "properties" : {
+        "cursorPosition" : "28,0",
+        "scrollLine" : "26",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

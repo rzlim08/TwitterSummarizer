@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1522523999710.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F3AB4CA3",
+    "lastKnownWriteTime" : 1522524918,
+    "last_content_update" : 1522524918779,
+    "path" : "~/TwitterProfile/testTwitter.R",
+    "project_path" : "testTwitter.R",
+    "properties" : {
+        "cursorPosition" : "12,79",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
