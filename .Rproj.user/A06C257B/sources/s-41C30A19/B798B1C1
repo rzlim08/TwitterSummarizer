@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3246259808",
+    "hash" : "0",
     "id" : "B798B1C1",
-    "lastKnownWriteTime" : 1522528264,
-    "last_content_update" : 1522528264734,
+    "lastKnownWriteTime" : 1522569851,
+    "last_content_update" : 1522569851639,
     "path" : "~/TwitterProfile/app.R",
     "project_path" : "app.R",
     "properties" : {
-        "cursorPosition" : "31,5",
-        "scrollLine" : "23"
+        "cursorPosition" : "23,66",
+        "scrollLine" : "15"
     },
     "relative_order" : 2,
     "source_on_save" : false,

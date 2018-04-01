@@ -1,23 +1,27 @@
-# 
+# App to view statistics and tweets of twitter users
 library(shiny)
 library(shinyjs)
 library(devtools)
 library(twitteR)
 library(stringr)
 library(ggplot2)
+
+## Access token and keys 
 ACCESS_TOKEN = '773947253102968832-uWJpi3aBQIXrfFVIAXtmxomVtNkJlNK'
 ACCESS_SECRET = 'Gm3htYaL07uvo6gk2lAAGUZPwKilMJWjXPEwoPoStV3nw'
 CONSUMER_KEY = 'TG3d15B5zgWXvvMHJOBIzWsWp'
 CONSUMER_SECRET = 'IDvM8ftxBFkD3Gfrm6AUfvt4gXnrY1Y9gDeYtudLWC2NeK5AgX'
 
+## setup twitter authentication 
 setup_twitter_oauth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET)
+
 ui <- shinyUI(fluidPage(
   useShinyjs(),
    tags$body(tags$style("body{font-family:Georgia; color:#404040; background-color: #f2f2f2; padding:30px}")),
+  
    # Application title
-
    mainPanel(
-     div(style = 'color:#1DA1F2;',titlePanel("TwitterFinder")),
+     div(style = 'color:#1DA1F2;',titlePanel("TwitterProfileViewer")),
      div(style="display:inline-block", textInput("screen_name", "Twitter Username", "hootsuite")),
      a(id = 'hide-stats', actionButton("search", "Search")),
      div(style= 'color:#262626;', h3(textOutput("value"))),
@@ -30,8 +34,7 @@ ui <- shinyUI(fluidPage(
      div(style = "display:inline-block;padding-right:10px;", htmlOutput("numFollowingStyle")),
      textOutput("favouritesTweet"),
      a(id = 'toggle', actionButton("tweetsStats", "Get Tweet Data")),
-     
-     width = 5
+     width = 4
    ), 
    mainPanel(
      div( id = 'statistics',
@@ -41,11 +44,18 @@ ui <- shinyUI(fluidPage(
      div(style="padding:8px;background-color:#f8f8f8", htmlOutput("topHashtags")), 
      div(style="padding:8px;background-color:#f8f8f8", htmlOutput("topMentions")), 
      div(style="padding:8px;background-color:#f8f8f8", htmlOutput("topURLs")),
-     plotOutput("pastWeek"),
-     plotOutput("source")
+     plotOutput("pastWeek")
      ),
-     width = 5
-   )
+     width = 4
+   ), 
+  mainPanel(
+    div( id = 'graph_and_tweets',
+         h3(textOutput("sourceAndPrevious")),
+         plotOutput("source"),
+         textOutput("pastTweets")
+    ),
+    width = 4
+  )
   
 ))
 
@@ -81,6 +91,7 @@ server <- shinyServer(function(input, output) {
            '<div style = "font-size: 200%;font-weight:bold;text-align:center">', prettyNum(u$favoritesCount,big.mark = ','), '</div>',
            '</div>', sep = ' ')
    })
+
    output$numFollowing <- renderText({
      input$search
      paste('Following:', u$friendsCount, sep = " ")
@@ -110,6 +121,11 @@ server <- shinyServer(function(input, output) {
      parse_tweets(tweets)
      paste("Last", length(tweets), "tweets", sep = ' ')
    })
+   
+   output$sourceAndPrevious <- renderText({
+     paste("Source of tweets", sep = ' ')
+   })
+   
    output$favoritesTweet <- renderText({
      input$tweetsStats
      val = tweet_info[['total_favourites']]/tweet_info[['number_tweets']]
@@ -190,6 +206,7 @@ parse_tweets<-function(tweet) {
   mentions_count = list()
   source_count = list()
   url_count = list()
+  tweet_text_list = list()
   for(i in tweet){
     source<-i$statusSource
     start <-str_locate(source, '>')[1]+1
@@ -207,10 +224,13 @@ parse_tweets<-function(tweet) {
       num_retweets = num_retweets+1
     }
     else{
+      ## Only do most stats on non-retweets
       hashtags = str_extract_all(i$text, "#\\S+")[[1]]
       mentions = str_extract_all(i$text, "@\\S+")[[1]]
+      
       if(identical(i$getReplyToSN(), character(0))){
         num_tweets<-num_tweets+1
+        tweet_text_list[[num_tweets]]<- i$text
         total_favourites<-total_favourites+i$favoriteCount
         total_retweets<-total_retweets+i$retweetCount
       }
@@ -282,6 +302,7 @@ parse_tweets<-function(tweet) {
   tweet_info[['number_tweets']]<<-num_tweets
   tweet_info[['total_favourites']]<<-total_favourites
   tweet_info[['total_retweets']]<<-total_retweets
+  tweet_info[['last_tweets']]<<-tweet_text_list
 }
 # Run the application 
 shinyApp(ui = ui, server = server)
