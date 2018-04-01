@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1522611423060.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1805557916",
+    "id" : "B36AF1FB",
+    "lastKnownWriteTime" : 1522611798,
+    "last_content_update" : 1522611798235,
+    "path" : "~/TwitterProfile/twitterServe.R",
+    "project_path" : "twitterServe.R",
+    "properties" : {
+        "cursorPosition" : "16,33",
+        "scrollLine" : "12",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

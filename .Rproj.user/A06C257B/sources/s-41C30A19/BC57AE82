@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1522609908812.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BC57AE82",
+    "lastKnownWriteTime" : 1522611296,
+    "last_content_update" : 1522611296732,
+    "path" : "~/TwitterProfile/tweetParse.R",
+    "project_path" : "tweetParse.R",
+    "properties" : {
+        "cursorPosition" : "101,18",
+        "scrollLine" : "91",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
