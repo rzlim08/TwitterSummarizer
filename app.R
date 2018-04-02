@@ -23,8 +23,8 @@ ui <- shinyUI(fluidPage(
   
    # Application title and user info
    mainPanel(
-     div(style = 'color:#1DA1F2;',titlePanel("TwitterProfileViewer")),
-     div(style="display:inline-block", textInput("screen_name", "Twitter Username", "hootsuite")),
+     div(style = 'color:#1DA1F2;',titlePanel("TwitterSummarizer")),
+     div(style="display:inline-block", textInput("screen_name", "Twitter Username", "google")),
      actionButton("search", "Search"),
      div(style= 'color:#262626;', h3(textOutput("value"))),
      htmlOutput("profilePic"),
