@@ -1,1 +1,5 @@
 .httr-oauth
+packrat/*
+.R*
+.Rproj.user/*
+

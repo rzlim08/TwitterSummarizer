@@ -15,15 +15,17 @@ CONSUMER_SECRET = 'IDvM8ftxBFkD3Gfrm6AUfvt4gXnrY1Y9gDeYtudLWC2NeK5AgX'
 ## setup twitter authentication 
 setup_twitter_oauth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET)
 
+
+## UI Creation
 ui <- shinyUI(fluidPage(
   useShinyjs(),
    tags$body(tags$style("body{font-family:Georgia; color:#404040; background-color: #f2f2f2; padding:30px}")),
   
-   # Application title
+   # Application title and user info
    mainPanel(
      div(style = 'color:#1DA1F2;',titlePanel("TwitterProfileViewer")),
      div(style="display:inline-block", textInput("screen_name", "Twitter Username", "hootsuite")),
-     a(id = 'hide-stats', actionButton("search", "Search")),
+     actionButton("search", "Search"),
      div(style= 'color:#262626;', h3(textOutput("value"))),
      htmlOutput("profilePic"),
      textOutput("description"),
@@ -33,9 +35,9 @@ ui <- shinyUI(fluidPage(
      div(style = "display:inline-block;padding-right:10px;", htmlOutput("numFollowersStyle")),
      div(style = "display:inline-block;padding-right:10px;", htmlOutput("numFollowingStyle")),
      textOutput("favouritesTweet"),
-     a(id = 'toggle', actionButton("tweetsStats", "Get Tweet Data")),
      width = 4
    ), 
+   ## Past tweet statistics
    mainPanel(
      div( id = 'statistics',
      h3(textOutput("lastTweets")),
@@ -48,6 +50,8 @@ ui <- shinyUI(fluidPage(
      ),
      width = 4
    ), 
+  
+  ## Past tweets and source
   mainPanel(
     div( id = 'graph_and_tweets',
          h3(textOutput("sourceAndPrevious")),
@@ -58,9 +62,7 @@ ui <- shinyUI(fluidPage(
   )
   
 ))
-
 source('twitterServe.R')
-
 # Run the application 
 shinyApp(ui = ui, server = server)
 
